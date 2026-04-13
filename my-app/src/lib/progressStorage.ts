@@ -1,4 +1,4 @@
-export type StoredPhase = 'entry' | 'reward' | 'done'
+export type StoredPhase = 'entry' | 'reward' | 'done' | 'debrief'
 
 export type ProgressState = {
   stageIndex: number
@@ -23,13 +23,17 @@ function sortUniqueStages(ids: number[]): number[] {
   )
 }
 
+function allStageIndices(stageCount: number): number[] {
+  return sortUniqueStages(Array.from({ length: stageCount }, (_, i) => i))
+}
+
 function inferUnlockedFromV1(
   stageIndex: number,
   phase: StoredPhase,
   stageCount: number,
 ): number[] {
   const u = new Set<number>()
-  if (phase === 'done') {
+  if (phase === 'done' || phase === 'debrief') {
     for (let i = 0; i < stageCount; i++) u.add(i)
   } else if (phase === 'reward') {
     for (let i = 0; i < stageIndex; i++) u.add(i)
@@ -56,20 +60,27 @@ export function loadProgress(stageCount: number): ProgressState | null {
     const data = JSON.parse(raw) as Record<string, unknown>
 
     if (data.v === 2 && typeof data.stageIndex === 'number') {
+      if (data.phase === 'debrief') {
+        return {
+          stageIndex: Math.max(0, stageCount - 1),
+          phase: 'debrief',
+          unlockedStages: allStageIndices(stageCount),
+        }
+      }
       if (data.phase === 'done') {
         return {
           stageIndex: Math.max(0, stageCount - 1),
           phase: 'done',
-          unlockedStages: sortUniqueStages(
-            Array.from({ length: stageCount }, (_, i) => i),
-          ),
+          unlockedStages: allStageIndices(stageCount),
         }
       }
       let stageIndex = Math.floor(data.stageIndex)
       if (!Number.isFinite(stageIndex)) stageIndex = 0
       stageIndex = Math.max(0, Math.min(stageIndex, stageCount - 1))
-      const phase =
-        data.phase === 'reward' || data.phase === 'entry' ? data.phase : 'entry'
+      const phase: StoredPhase =
+        data.phase === 'reward' || data.phase === 'entry'
+          ? data.phase
+          : 'entry'
       const unlockedStages = clampUnlocked(data.unlockedStages, stageCount)
       return { stageIndex, phase, unlockedStages }
     }

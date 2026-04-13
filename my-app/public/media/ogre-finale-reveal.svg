@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="tower" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#2a1f33"/>
+      <stop offset="100%" style="stop-color:#4a3560"/>
+    </linearGradient>
+    <linearGradient id="pg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fdf6e8"/>
+      <stop offset="100%" style="stop-color:#e8dcc8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#tower)"/>
+  <rect x="60" y="40" width="680" height="370" rx="12" fill="url(#pg)" stroke="#c9a227" stroke-width="4"/>
+  <text x="400" y="185" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#3d2914">The princess&apos; door</text>
+  <text x="400" y="235" text-anchor="middle" font-family="Georgia, serif" font-size="15" fill="#5c4033">Final reveal  swap for photo or video in stages.ts</text>
+</svg>

@@ -19,6 +19,7 @@ import {
   isViewingRewardSlide,
   progressLabel,
 } from '../lib/slideNavigation'
+import { Debrief } from './Debrief'
 import { PasscodeGate } from './PasscodeGate'
 import { RewardSlide } from './RewardSlide'
 
@@ -203,11 +204,26 @@ export function EscapeRoom() {
     )
   }
 
+  if (phase === 'debrief') {
+    return layout(
+      <div className="story-card debrief-card">
+        <Debrief />
+      </div>,
+    )
+  }
+
   if (phase === 'done') {
     return layout(
       <div className="story-card completion">
         <h1 className="completion__title">{completionCopy.title}</h1>
         <p className="completion__subtitle">{completionCopy.subtitle}</p>
+        <button
+          type="button"
+          className="btn btn--primary completion__cta"
+          onClick={() => setProgress((p) => ({ ...p, phase: 'debrief' }))}
+        >
+          Continue to debrief
+        </button>
       </div>,
     )
   }

@@ -26,6 +26,45 @@ export type Stage = {
   reward: RewardMedia;
 };
 
+const ONION_FOREST_BODY = `🌲 The Path Opens…
+The Love Pastry has awakened the forest.
+But the way forward is hidden in layers.
+
+🧅 The Onion Forest
+Four enchanted onions lie scattered across the land (around the d school)
+…but they are fragile.
+
+A Warning
+Once you find an onion, you must remain where it grows (you can't move your position once it's found).
+To disturb it is to halt its magic.
+
+A Truth
+The forest does not grant knowledge to the one who seeks it.
+Each onion carries a letter that spells out a word for the next puzzle.
+
+What You Must Do
+Each of you must find one onion
+Stay with it once found
+Along with your onion is a clue card—but it does not belong to you
+Your clue card will reveal which layer another player must open
+
+The Magic Mirror
+The forest allows voices to travel through reflection.
+Use your magic mirrors (your phones) to see and speak to one another.
+Share what your onion tells you.
+Listen for the clue that belongs to yours.
+
+🔍 Clues to Where Each Onion is Hidden:
+Wheels never turn, yet journeys are imagined
+the cold keeps what should not spoil
+the stars exist indoors, untouched by night
+fabric is shaped, stitched into something new
+
+Your Goal
+Each onion hides many letters… but only one is true.
+Use the clues you exchange to reveal the correct letter from each onion.
+Bring the letters together to form the word that unlocks the next path.`;
+
 export const stages: Stage[] = [
   {
     id: "onion",
@@ -36,9 +75,8 @@ export const stages: Stage[] = [
     reward: {
       kind: "image",
       src: "/media/stage1-reveal.svg",
-      alt: "placeholder",
-      heading: "Onion Forest",
-      body: "Every layer brings you closer to happily ever after.",
+      alt: "Onion Forest briefing",
+      body: ONION_FOREST_BODY,
     },
   },
   {
@@ -55,11 +93,39 @@ export const stages: Stage[] = [
       alt: 'Storybook placeholder — or use kind: "video", src: "/media/reveal.mp4"',
     },
   },
+  {
+    id: "siren-cove",
+    title: "Siren's Cove",
+    hint: "The sirens hum a four-digit tune…",
+    passcode: "3030",
+    caseInsensitive: false,
+    reward: {
+      kind: "image",
+      src: "/media/siren-cove-reveal.svg",
+      alt: "Siren's Cove reveal",
+      heading: "Past the rocks",
+      body: "The cove falls quiet. One last gate stands between you and the tower.",
+    },
+  },
+  {
+    id: "ogre-princess-door",
+    title: "The princess' door",
+    hint: "Who's the real hero in this story?",
+    passcode: "ogre",
+    caseInsensitive: true,
+    reward: {
+      kind: "image",
+      src: "/media/ogre-finale-reveal.svg",
+      alt: "The door opens — princess rescued",
+      heading: "She's safe",
+      body: "The lock gives way. True love—and a little grit—win the day.",
+    },
+  },
 ];
 
 export const completionCopy = {
-  title: "You made it out of the swamp!",
-  subtitle: "The story continues… happily ever after.",
+  title: "You rescued the princess!",
+  subtitle: "The door is open, the tower behind you—happily ever after awaits.",
 };
 
 export function passcodesMatch(

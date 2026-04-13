@@ -412,8 +412,11 @@
   font-style: italic;
   color: var(--text-muted);
   line-height: 1.55;
-  max-width: 42ch;
-  text-wrap: balance;
+  max-width: min(65ch, 100%);
+  white-space: pre-line;
+  text-align: left;
+  align-self: stretch;
+  width: 100%;
 }
 
 .reward-slide__frame {
@@ -458,4 +461,159 @@
   line-height: 1.5;
   margin: 0 auto;
   max-width: min(36ch, 100%);
+}
+
+.completion__cta {
+  margin-top: 1.35rem;
+  width: 100%;
+  max-width: 20rem;
+}
+
+/* Debrief */
+.debrief-card {
+  text-align: left;
+}
+
+.debrief__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  color: var(--text-h);
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.debrief__lead {
+  margin: 0 0 1.25rem;
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  line-height: 1.45;
+}
+
+.debrief--thanks .debrief__title {
+  margin-bottom: 0.75rem;
+}
+
+.debrief--thanks .debrief__lead {
+  margin-bottom: 0;
+  font-style: normal;
+}
+
+.debrief__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.debrief__fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  min-width: 0;
+}
+
+.debrief__legend {
+  font-weight: 600;
+  color: var(--text-h);
+  font-size: 1rem;
+  margin-bottom: 0.65rem;
+  padding: 0;
+}
+
+.debrief__ratings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.debrief__radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.debrief__radio-input {
+  accent-color: var(--accent);
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+}
+
+.debrief__radio-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.65rem;
+  border: 2px solid var(--border-light);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+
+.debrief__radio-label:has(.debrief__radio-input:checked) .debrief__radio-text {
+  border-color: var(--gold-dark);
+  background: rgba(201, 162, 39, 0.15);
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.debrief__radio-label:hover .debrief__radio-text {
+  border-color: var(--gold-dark);
+}
+
+.debrief__radio-input:focus-visible + .debrief__radio-text {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.debrief__radio-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--gold-dark);
+}
+
+.debrief__label {
+  font-weight: 600;
+  color: var(--text-h);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.debrief__textarea {
+  font: inherit;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0.65rem 0.85rem;
+  border: 2px solid var(--border-light);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--text-h);
+  box-sizing: border-box;
+  resize: vertical;
+  min-height: 7rem;
+}
+
+.debrief__textarea:focus {
+  outline: none;
+  border-color: var(--gold-dark);
+  box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.25);
+}
+
+.debrief__submit {
+  align-self: center;
+  margin-top: 0.25rem;
+  min-width: 12rem;
+}
+
+.debrief__error {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--error);
+  line-height: 1.4;
 }

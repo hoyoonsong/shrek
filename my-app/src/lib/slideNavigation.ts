@@ -22,6 +22,7 @@ export function canGoBack(
   unlockedStages: number[],
 ): boolean {
   if (stageCount === 0) return false
+  if (phase === 'debrief') return true
   if (phase === 'done') return true
 
   if (isViewingRewardSlide(stageIndex, phase, unlockedStages)) {
@@ -46,6 +47,9 @@ export function goBack(
   stageCount: number,
   unlockedStages: number[],
 ): { stageIndex: number; phase: StoredPhase } {
+  if (phase === 'debrief') {
+    return { stageIndex: Math.max(0, stageCount - 1), phase: 'done' }
+  }
   if (phase === 'done') {
     return { stageIndex: Math.max(0, stageCount - 1), phase: 'reward' }
   }
@@ -69,7 +73,7 @@ export function canGoForward(
   phase: StoredPhase,
   unlockedStages: number[],
 ): boolean {
-  if (phase === 'done') return false
+  if (phase === 'done' || phase === 'debrief') return false
   if (phase === 'entry' && !isStageUnlocked(unlockedStages, stageIndex)) return false
   return isViewingRewardSlide(stageIndex, phase, unlockedStages)
 }
@@ -110,6 +114,9 @@ export function progressLabel(
 ): string {
   if (stageCount === 0) return ''
   const n = stageIndex + 1
+  if (phase === 'debrief') {
+    return 'Debrief'
+  }
   if (phase === 'done') {
     return `Story complete · ${stageCount} stage${stageCount === 1 ? '' : 's'}`
   }
