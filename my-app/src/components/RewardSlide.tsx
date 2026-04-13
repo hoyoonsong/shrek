@@ -9,6 +9,9 @@ type Props = {
 export function RewardSlide({ reward, onContinue, continueLabel }: Props) {
   return (
     <div className="reward-slide">
+      {reward.heading ? (
+        <p className="reward-slide__heading">{reward.heading}</p>
+      ) : null}
       <div className="reward-slide__frame">
         {reward.kind === 'image' ? (
           <img
@@ -26,6 +29,9 @@ export function RewardSlide({ reward, onContinue, continueLabel }: Props) {
           />
         )}
       </div>
+      {reward.body ? (
+        <p className="reward-slide__body">{reward.body}</p>
+      ) : null}
       <button
         type="button"
         className="btn btn--primary reward-slide__continue"

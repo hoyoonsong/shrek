@@ -4,66 +4,74 @@
  */
 
 export type RewardMedia = {
-  kind: 'image' | 'video'
+  kind: "image" | "video";
   /** Public URL, e.g. /media/clue-reveal.jpg */
-  src: string
+  src: string;
   /** Alt text for images; used as aria-label for video if set */
-  alt?: string
-}
+  alt?: string;
+  /** Optional storybook line above the media (display font) */
+  heading?: string;
+  /** Optional caption below the media (serif / italic) */
+  body?: string;
+};
 
 export type Stage = {
   /** Stable id for keys */
-  id: string
-  title: string
-  hint?: string
-  passcode: string
+  id: string;
+  title: string;
+  hint?: string;
+  passcode: string;
   /** Default false: comparison is case-sensitive after trim */
-  caseInsensitive?: boolean
-  reward: RewardMedia
-}
+  caseInsensitive?: boolean;
+  reward: RewardMedia;
+};
 
 export const stages: Stage[] = [
   {
-    id: 'onion',
-    title: 'First trial',
-    hint: 'What has layers, like a parfait?',
-    passcode: 'onion',
+    id: "onion",
+    title: "Trial 1: Gingerbread Man and Baker: Making a Love Puzzle",
+    hint: "What has layers, like a parfait?",
+    passcode: "43526",
     caseInsensitive: true,
     reward: {
-      kind: 'image',
-      src: '/media/stage1-reveal.svg',
-      alt: 'Storybook placeholder — replace with your reveal image',
+      kind: "image",
+      src: "/media/stage1-reveal.svg",
+      alt: "placeholder",
+      heading: "Onion Forest",
+      body: "Every layer brings you closer to happily ever after.",
     },
   },
   {
-    id: 'swamp',
-    title: 'Second trial',
-    hint: 'Home sweet muck.',
-    passcode: 'swamp',
+    id: "swamp",
+    title: "Onion Forest",
+    hint: "insert passcode here to move onto siren cove!",
+    passcode: "sing",
     caseInsensitive: true,
     reward: {
-      kind: 'image',
-      src: '/media/stage2-reveal.svg',
+      heading: "Siren Cove",
+      body: "The siren's song is calling you. Follow it to the next trial.",
+      kind: "image",
+      src: "/media/stage2-reveal.svg",
       alt: 'Storybook placeholder — or use kind: "video", src: "/media/reveal.mp4"',
     },
   },
-]
+];
 
 export const completionCopy = {
-  title: 'You made it out of the swamp!',
-  subtitle: 'The story continues… happily ever after.',
-}
+  title: "You made it out of the swamp!",
+  subtitle: "The story continues… happily ever after.",
+};
 
 export function passcodesMatch(
   entered: string,
   expected: string,
   caseInsensitive?: boolean,
 ): boolean {
-  const a = entered.trim()
-  const b = expected.trim()
-  if (a.length === 0) return false
+  const a = entered.trim();
+  const b = expected.trim();
+  if (a.length === 0) return false;
   if (caseInsensitive) {
-    return a.toLowerCase() === b.toLowerCase()
+    return a.toLowerCase() === b.toLowerCase();
   }
-  return a === b
+  return a === b;
 }
