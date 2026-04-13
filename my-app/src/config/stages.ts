@@ -1,6 +1,7 @@
 /**
  * Edit this file to change passcodes, hints, and reward media between events.
  * Put images and videos in public/media/ and reference them as /media/your-file.jpg
+ * Optional gateImage on a stage shows a picture on the passcode screen (before unlock).
  */
 
 export type RewardMedia = {
@@ -15,6 +16,13 @@ export type RewardMedia = {
   body?: string;
 };
 
+/** Optional illustration on the passcode screen (before unlock). */
+export type GateImage = {
+  /** Public URL, e.g. /media/clue.png — spaces in filenames are OK */
+  src: string;
+  alt?: string;
+};
+
 export type Stage = {
   /** Stable id for keys */
   id: string;
@@ -23,6 +31,8 @@ export type Stage = {
   passcode: string;
   /** Default false: comparison is case-sensitive after trim */
   caseInsensitive?: boolean;
+  /** Image shown on the passcode page (above the input) */
+  gateImage?: GateImage;
   reward: RewardMedia;
 };
 
@@ -134,9 +144,13 @@ export const stages: Stage[] = [
     hint: "1 person finds and shouts back the code located behind the castle wall while others decipher the code with strings",
     passcode: "ogre",
     caseInsensitive: true,
+    gateImage: {
+      src: "/media/Fiona gazing through a castle window.png",
+      alt: "Fiona gazing through a castle window",
+    },
     reward: {
       kind: "image",
-      src: "/media/ogre-finale-reveal.svg",
+      src: "/media/Princess Fiona steps into daylight.png",
       alt: "The door opens — princess rescued",
       heading: "She's safe",
       body: "The lock gives way. True love—and a little grit—win the day.",

@@ -1,4 +1,5 @@
 import type { RewardMedia } from '../config/stages'
+import { publicMediaSrc } from '../lib/publicMediaSrc'
 
 type Props = {
   reward: RewardMedia
@@ -16,13 +17,13 @@ export function RewardSlide({ reward, onContinue, continueLabel }: Props) {
         {reward.kind === 'image' ? (
           <img
             className="reward-slide__media"
-            src={reward.src}
+            src={publicMediaSrc(reward.src)}
             alt={reward.alt ?? 'Reveal'}
           />
         ) : (
           <video
             className="reward-slide__media"
-            src={reward.src}
+            src={publicMediaSrc(reward.src)}
             controls
             playsInline
             aria-label={reward.alt ?? 'Reveal video'}

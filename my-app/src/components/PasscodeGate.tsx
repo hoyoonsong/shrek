@@ -1,5 +1,6 @@
 import { useId, useState, type FormEvent } from 'react'
 import { passcodesMatch, type Stage } from '../config/stages'
+import { publicMediaSrc } from '../lib/publicMediaSrc'
 
 type Props = {
   stage: Stage
@@ -32,6 +33,15 @@ export function PasscodeGate({ stage, onSuccess }: Props) {
       <h2 className="passcode-gate__title">{stage.title}</h2>
       {stage.hint ? (
         <p className="passcode-gate__hint">{stage.hint}</p>
+      ) : null}
+      {stage.gateImage ? (
+        <div className="passcode-gate__frame">
+          <img
+            className="passcode-gate__media"
+            src={publicMediaSrc(stage.gateImage.src)}
+            alt={stage.gateImage.alt ?? ''}
+          />
+        </div>
       ) : null}
       <form className="passcode-gate__form" onSubmit={handleSubmit}>
         <label className="passcode-gate__label" htmlFor={id}>
