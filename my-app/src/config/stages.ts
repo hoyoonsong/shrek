@@ -55,10 +55,10 @@ Share what your onion tells you.
 Listen for the clue that belongs to yours.
 
 🔍 Clues to Where Each Onion is Hidden:
-Wheels never turn, yet journeys are imagined
-the cold keeps what should not spoil
-the stars exist indoors, untouched by night
-fabric is shaped, stitched into something new
+  - Wheels never turn, yet journeys are imagined.
+  - the cold keeps what should not spoil.
+  - the stars exist indoors, untouched by night.
+  - fabric is shaped, stitched into something new.
 
 Your Goal
 Each onion hides many letters… but only one is true.
