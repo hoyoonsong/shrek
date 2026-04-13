@@ -42,13 +42,13 @@ A Truth
 The forest does not grant knowledge to the one who seeks it.
 Each onion carries a letter that spells out a word for the next puzzle.
 
-What You Must Do
-Each of you must find one onion
-Stay with it once found
-Along with your onion is a clue card—but it does not belong to you
-Your clue card will reveal which layer another player must open
+What You Must Do:
+- Each of you must find one onion
+- Stay with it once found
+- Along with your onion is a clue card—but it does not belong to you
+- Your clue card will reveal which layer another player must open
 
-The Magic Mirror
+The Magic Mirror:
 The forest allows voices to travel through reflection.
 Use your magic mirrors (your phones) to see and speak to one another.
 Share what your onion tells you.
@@ -64,6 +64,27 @@ Your Goal
 Each onion hides many letters… but only one is true.
 Use the clues you exchange to reveal the correct letter from each onion.
 Bring the letters together to form the word that unlocks the next path.`;
+
+const Siren_COVE_BODY = `
+🌊 The Water Awaits…
+The Onion Forest has been cleared. 
+Now you must traverse the rocky waters ahead.🧜‍♀️ The Siren Cove
+Your boat lies waiting for four captains to steer it forward through rocky waters. 
+
+BEWARE! If you are not careful, a siren may lead you astray…
+
+Four Captains…Four Hands. 
+The boat requires the heat from four different human hands to be properly steered. 
+If used with precision, the steering wheel will guide you correctly into the clear. 
+
+What You Must Do
+Each of you must carefully hold on to a side of the steering wheel (using ONLY the string)
+Guide the boat (magnet) across to the shore
+Once the boat reaches the shore, an important code will be revealed…
+
+⚠️ Important
+If unwanted hands reach into the depths of the cove, a siren will catch you and take you far away…you may only navigate the cove. 
+`;
 
 export const stages: Stage[] = [
   {
@@ -87,7 +108,7 @@ export const stages: Stage[] = [
     caseInsensitive: true,
     reward: {
       heading: "Siren Cove",
-      body: "The siren's song is calling you. Follow it to the next trial.",
+      body: Siren_COVE_BODY,
       kind: "image",
       src: "/media/stage2-reveal.svg",
       alt: 'Storybook placeholder — or use kind: "video", src: "/media/reveal.mp4"',
