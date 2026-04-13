@@ -100,12 +100,16 @@ export const stages: Stage[] = [
   {
     id: "onion",
     title: "Trial 1: Gingerbread Man and Baker: Making a Love Puzzle",
-    hint: "What has layers, like a parfait?",
+    gateImage: {
+      src: "/media/Baker and gingerbread man forming love.png",
+      alt: "Baker and gingerbread man forming love",
+    },
+    hint: "Hint goes here",
     passcode: "43526",
     caseInsensitive: true,
     reward: {
       kind: "image",
-      src: "/media/stage1-reveal.svg",
+      src: "/media/Whimsical onion house village in bloom.png",
       alt: "Onion Forest briefing",
       body: ONION_FOREST_BODY,
     },
@@ -113,6 +117,10 @@ export const stages: Stage[] = [
   {
     id: "swamp",
     title: "Onion Forest",
+    gateImage: {
+      src: "/media/Enchanted forest meets Siren's Cove.png",
+      alt: "Onion Forest meets siren cove",
+    },
     hint: "insert passcode here to move onto siren cove!",
     passcode: "sing",
     caseInsensitive: true,
@@ -120,22 +128,8 @@ export const stages: Stage[] = [
       heading: "Siren Cove",
       body: Siren_COVE_BODY,
       kind: "image",
-      src: "/media/stage2-reveal.svg",
+      src: "/media/Siren Cove under the crescent moon.png",
       alt: 'Storybook placeholder — or use kind: "video", src: "/media/reveal.mp4"',
-    },
-  },
-  {
-    id: "siren-cove",
-    title: "Siren's Cove",
-    hint: "The sirens hum a four-digit tune…",
-    passcode: "3030",
-    caseInsensitive: false,
-    reward: {
-      kind: "image",
-      src: "/media/siren-cove-reveal.svg",
-      alt: "Siren's Cove reveal",
-      heading: "Past the rocks",
-      body: "The cove falls quiet. One last gate stands between you and the tower.",
     },
   },
   {
