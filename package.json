@@ -1,0 +1,11 @@
+{
+  "name": "shrek-the-escape-room",
+  "private": true,
+  "workspaces": ["my-app"],
+  "scripts": {
+    "dev": "npm run dev -w my-app",
+    "build": "npm run build -w my-app",
+    "lint": "npm run lint -w my-app",
+    "preview": "npm run preview -w my-app"
+  }
+}

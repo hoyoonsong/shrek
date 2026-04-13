@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="p2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ede4d3"/>
+      <stop offset="100%" style="stop-color:#d4c4a8"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e3d2f"/>
+      <stop offset="100%" style="stop-color:#3d6b4f"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#g2)"/>
+  <rect x="60" y="40" width="680" height="370" rx="12" fill="url(#p2)" stroke="#b8860b" stroke-width="4"/>
+  <text x="400" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#3d2914">Stage 2 reveal</text>
+  <text x="400" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5c4033">Use kind: &quot;video&quot; and src: /media/clip.mp4 for video</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="parchment" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f4e8d4"/>
+      <stop offset="100%" style="stop-color:#e8dcc4"/>
+    </linearGradient>
+    <linearGradient id="swamp" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#2d4a3e"/>
+      <stop offset="100%" style="stop-color:#4a7c59"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#swamp)"/>
+  <rect x="60" y="40" width="680" height="370" rx="12" fill="url(#parchment)" stroke="#8b6914" stroke-width="4"/>
+  <text x="400" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="28" fill="#3d2914">Stage 1 reveal</text>
+  <text x="400" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#5c4033">Replace with /media/your-image.jpg in stages.ts</text>
+</svg>
