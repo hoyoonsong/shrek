@@ -130,8 +130,8 @@ export const stages: Stage[] = [
   },
   {
     id: "ogre-princess-door",
-    title: "The princess' door",
-    hint: "Who's the real hero in this story?",
+    title: "The Castle Wall",
+    hint: "1 person finds and shouts back the code located behind the castle wall while others decipher the code with strings",
     passcode: "ogre",
     caseInsensitive: true,
     reward: {
