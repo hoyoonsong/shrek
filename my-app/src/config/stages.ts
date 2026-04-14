@@ -87,13 +87,13 @@ Four Captains…Four Hands.
 The boat requires the heat from four different human hands to be properly steered. 
 If used with precision, the steering wheel will guide you correctly into the clear. 
 
-What You Must Do
-Each of you must carefully hold on to a side of the steering wheel (using ONLY the string)
-Guide the boat (magnet) across to the shore
-Once the boat reaches the shore, an important code will be revealed…
+What You Must Do:
+- Each of you must carefully hold on to a side of the steering wheel (using ONLY the string)
+- Guide the boat (magnet) across to the shore
+- Once the boat reaches the shore, an important code will be revealed…
 
-⚠️ Important
-If unwanted hands reach into the depths of the cove, a siren will catch you and take you far away…you may only navigate the cove. 
+⚠️ Important:
+- If unwanted hands reach into the depths of the cove, a siren will catch you and take you far away…you may only navigate the cove. 
 `;
 
 export const stages: Stage[] = [
