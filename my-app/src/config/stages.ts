@@ -12,8 +12,11 @@ export type RewardMedia = {
   alt?: string;
   /** Optional storybook line above the media (display font) */
   heading?: string;
-  /** Optional caption below the media (serif / italic) */
-  body?: string;
+  /**
+   * Story text below the media. Use `**phrase**` for bold emphasis.
+   * Pass a string for one page, or string[] for several pages (Next / Back before Continue).
+   */
+  body?: string | string[];
 };
 
 /** Optional illustration on the passcode screen (before unlock). */
@@ -36,65 +39,43 @@ export type Stage = {
   reward: RewardMedia;
 };
 
-const ONION_FOREST_BODY = `🌲 The Path Opens…
-The Love Pastry has awakened the forest.
-But the way forward is hidden in layers.
+const ONION_FOREST_PAGES = [
+  `🌲 **The path opens.** The Love Pastry woke the forest—the way forward is **layered**.
 
-🧅 The Onion Forest
-Four enchanted onions lie scattered across the land (around the d school)
-…but they are fragile.
+🧅 **The Onion Forest:** four onions are hidden (around the **d school**).
 
-A Warning
-Once you find an onion, you must remain where it grows (you can't move your position once it's found).
-To disturb it is to halt its magic.
+⚠️ **A warning:** After you find an onion, **you can't move your position**—stay put or the magic breaks.
 
-A Truth
-The forest does not grant knowledge to the one who seeks it.
-Each onion carries a letter that spells out a word for the next puzzle.
+💡 **A truth:** The forest won't hand you answers. Each onion holds **one true letter** for the **next passcode**.`,
 
-What You Must Do:
-- Each of you must find one onion
-- Stay with it once found
-- Along with your onion is a clue card—but it does not belong to you
-- Your clue card will reveal which layer another player must open
+  `**What you must do:**
+- Find **one onion** each; **stay with it.**
+- Your **clue card** isn't only yours—it tells **another player** which **layer** to open.`,
 
-The Magic Mirror:
-The forest allows voices to travel through reflection.
-Use your magic mirrors (your phones) to see and speak to one another.
-Share what your onion tells you.
-Listen for the clue that belongs to yours.
+  `🪞 **The magic mirror:** Use **your phones**—show, speak, and listen for **the clue meant for your onion.**`,
 
-🔍 Clues to Where Each Onion is Hidden:
-  - Wheels never turn, yet journeys are imagined.
-  - the cold keeps what should not spoil.
-  - the stars exist indoors, untouched by night.
-  - fabric is shaped, stitched into something new.
+  `🔍 **Where to look:**
+- Wheels never turn, yet journeys are imagined.
+- Cold keeps what should not spoil.
+- Stars indoors, untouched by night.
+- Fabric shaped and stitched into something new.`,
 
-Your Goal
-Each onion hides many letters… but only one is true.
-Use the clues you exchange to reveal the correct letter from each onion.
-Bring the letters together to form the word that unlocks the next path.`;
+  `🎯 **Your goal:** Pick the **one true letter** per onion (clues decide). **Spell the word** that unlocks the next trial.`,
+];
 
-const Siren_COVE_BODY = `
-🌊 The Water Awaits…
-The Onion Forest has been cleared. 
-Now you must traverse the rocky waters ahead.🧜‍♀️ The Siren Cove
-Your boat lies waiting for four captains to steer it forward through rocky waters. 
+const SIREN_COVE_PAGES = [
+  `🌊 **The water awaits.** The forest is cleared—**Siren Cove** is next.
 
-BEWARE! If you are not careful, a siren may lead you astray…
+🧜‍♀️ **Four captains, one boat** through rocky shallows.
 
-Four Captains…Four Hands. 
-The boat requires the heat from four different human hands to be properly steered. 
-If used with precision, the steering wheel will guide you correctly into the clear. 
+⚠️ **Beware:** A **siren** will **mislead** anyone who isn't careful.`,
 
-What You Must Do:
-- Each of you must carefully hold on to a side of the steering wheel (using ONLY the string)
-- Guide the boat (magnet) across to the shore
-- Once the boat reaches the shore, an important code will be revealed…
+  `**What you must do:**
+- **Four hands** on the wheel—touch **ONLY the string**, not the rim.
+- Steer the **magnet boat** to shore → a **code** appears.
 
-⚠️ Important:
-- If unwanted hands reach into the depths of the cove, a siren will catch you and take you far away…you may only navigate the cove. 
-`;
+🚫 **Important:** **Unwanted hands** in the water end the run—**stay in the boat; navigate only.**`,
+];
 
 export const stages: Stage[] = [
   {
@@ -111,7 +92,7 @@ export const stages: Stage[] = [
       kind: "image",
       src: "/media/Whimsical onion house village in bloom.png",
       alt: "Onion Forest briefing",
-      body: ONION_FOREST_BODY,
+      body: ONION_FOREST_PAGES,
     },
   },
   {
@@ -126,7 +107,7 @@ export const stages: Stage[] = [
     caseInsensitive: true,
     reward: {
       heading: "Siren Cove",
-      body: Siren_COVE_BODY,
+      body: SIREN_COVE_PAGES,
       kind: "image",
       src: "/media/Siren Cove under the crescent moon.png",
       alt: 'Storybook placeholder — or use kind: "video", src: "/media/reveal.mp4"',

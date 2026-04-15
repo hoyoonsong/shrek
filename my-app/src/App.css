@@ -426,16 +426,124 @@
 
 .reward-slide__body {
   margin: 0;
-  font-family: var(--font-body);
-  font-size: 1.02rem;
-  font-style: italic;
-  color: var(--text-muted);
-  line-height: 1.55;
-  max-width: min(65ch, 100%);
-  white-space: pre-line;
-  text-align: left;
   align-self: stretch;
   width: 100%;
+  max-width: min(65ch, 100%);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.35rem 0.5rem 0.5rem;
+  margin-inline: -0.35rem;
+  text-align: left;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 0 0 1px rgba(90, 70, 40, 0.12);
+  overflow: visible;
+}
+
+.reward-slide__strong {
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.reward-slide__pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  width: 100%;
+  max-width: min(65ch, 100%);
+  margin-top: 0.15rem;
+}
+
+.reward-slide__pager-status {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+  flex: 1 1 auto;
+  min-width: 8rem;
+}
+
+.reward-slide__pager .btn--primary,
+.reward-slide__pager .btn--secondary {
+  margin-top: 0;
+}
+
+.reward-slide__pager-back,
+.reward-slide__pager-next {
+  flex: 0 1 auto;
+  min-width: 6.5rem;
+}
+
+.reward-slide__pager .btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  filter: grayscale(0.2);
+}
+
+.reward-slide__pager .btn:disabled:hover {
+  filter: grayscale(0.2);
+}
+
+.reward-slide__prose {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-style: normal;
+  font-weight: 400;
+  color: var(--text-h);
+  line-height: 1.62;
+  white-space: pre-line;
+  opacity: 0.92;
+}
+
+.reward-slide__prose--subhead {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--text-h);
+  opacity: 1;
+  letter-spacing: 0.02em;
+  margin-top: 0.15rem;
+}
+
+.reward-slide__prose--subhead:first-child {
+  margin-top: 0;
+}
+
+.reward-slide__prose--lead::first-line {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: var(--text-h);
+}
+
+.reward-slide__list {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--text-h);
+  opacity: 0.9;
+}
+
+.reward-slide__list li {
+  padding-left: 0.25rem;
+}
+
+.reward-slide__list li::marker {
+  color: var(--gold-dark);
 }
 
 .reward-slide__frame {

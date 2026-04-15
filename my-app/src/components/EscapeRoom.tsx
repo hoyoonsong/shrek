@@ -232,6 +232,7 @@ export function EscapeRoom() {
     return layout(
       <div className="story-card">
         <RewardSlide
+          key={stage.id}
           reward={stage.reward}
           continueLabel={isLast ? 'Finish tale' : 'Continue'}
           onContinue={handleForward}
