@@ -57,7 +57,7 @@ const ONION_FOREST_PAGES = [
   `🔍 **Where to look:**
 - Wheels never turn, yet journeys are imagined.
 - Cold keeps what should not spoil.
-- Stars indoors, untouched by night.
+- Stars indoors, a restroom for all, found upstairs.
 - Fabric shaped and stitched into something new.`,
 
   `🎯 **Your goal:** Pick the **one true letter** per onion (clues decide). **Spell the word** that unlocks the next trial.`,
