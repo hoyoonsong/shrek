@@ -54,7 +54,7 @@ const ONION_FOREST_PAGES = [
 
   `🪞 **The magic mirror:** Use **your phones**—show, speak, and listen for **the clue meant for your onion.**`,
 
-  `🔍 **Where to look:**
+  `🔍 **Where to look: (take a picture of this)**
 - Wheels never turn, yet journeys are imagined.
 - Cold keeps what should not spoil.
 - Stars indoors, a restroom for all, found upstairs.
