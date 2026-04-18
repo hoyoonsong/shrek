@@ -26,8 +26,10 @@ export function Debrief() {
     const result = await submitDebriefEmail({ rating, reflection });
     setSending(false);
 
-    if (!result.ok) {
-      setSendError("Could not send reflection. Please try again.");
+    if (result.ok === false) {
+      setSendError(
+        result.error ?? "Could not send reflection. Please try again.",
+      );
       return;
     }
 

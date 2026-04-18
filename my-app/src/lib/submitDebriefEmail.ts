@@ -3,6 +3,44 @@ export const DEBRIEF_MAILTO = 'hoyoon@stanford.edu'
 
 const WEB3FORMS_URL = 'https://api.web3forms.com/submit'
 
+type Web3FormsJson = {
+  success?: boolean
+  message?: string
+  body?: { success?: boolean; message?: string }
+}
+
+/** Normalize Web3Forms responses (flat or nested `body`, success flag optional on some 200s). */
+function interpretWeb3FormsResponse(
+  res: Response,
+  raw: unknown,
+): { ok: boolean; message: string } {
+  const data =
+    raw && typeof raw === 'object' ? (raw as Web3FormsJson) : undefined
+  const message =
+    (typeof data?.message === 'string' && data.message) ||
+    (typeof data?.body?.message === 'string' && data.body.message) ||
+    'Could not send email.'
+
+  const explicitFail =
+    data?.success === false || data?.body?.success === false
+  if (explicitFail) {
+    return { ok: false, message }
+  }
+
+  const explicitOk =
+    data?.success === true || data?.body?.success === true
+  if (explicitOk) {
+    return { ok: true, message }
+  }
+
+  // Docs’ fetch examples treat HTTP 200 as success even when `success` is omitted.
+  if (res.ok && res.status >= 200 && res.status < 300) {
+    return { ok: true, message }
+  }
+
+  return { ok: false, message }
+}
+
 const RATING_LABELS: Record<string, string> = {
   '5': '5 — Loved it',
   '4': '4 — Great',
@@ -46,6 +84,11 @@ export async function submitDebriefEmail(
   const key = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY?.trim()
 
   if (!key) {
+    if (import.meta.env.PROD) {
+      console.warn(
+        '[Debrief] VITE_WEB3FORMS_ACCESS_KEY is missing from this build. In Vercel, add it for Production and Preview, then redeploy so Vite can inline it.',
+      )
+    }
     openMailtoFallback(payload)
     return { ok: true, channel: 'mailto' }
   }
@@ -60,17 +103,26 @@ export async function submitDebriefEmail(
       body: JSON.stringify({
         access_key: key,
         subject: 'Shrek Escape Room — Debrief submission',
-        from_name: 'Shrek Escape Room',
+        from_name: 'Shrek Escape Room (debrief)',
+        name: 'Anonymous debrief',
+        replyto: DEBRIEF_MAILTO,
         message: buildMessage(payload),
       }),
     })
 
-    const data = (await res.json()) as { success?: boolean; message?: string }
+    let raw: unknown
+    try {
+      raw = await res.json()
+    } catch {
+      return {
+        ok: false,
+        error: 'Invalid response from email service. Please try again.',
+      }
+    }
 
-    if (!res.ok || !data.success) {
-      const msg =
-        typeof data.message === 'string' ? data.message : 'Could not send email.'
-      return { ok: false, error: msg }
+    const { ok, message } = interpretWeb3FormsResponse(res, raw)
+    if (!ok) {
+      return { ok: false, error: message }
     }
 
     return { ok: true, channel: 'api' }
